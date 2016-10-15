@@ -1,0 +1,32 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+    
+    <h1>Sign In</h1>
+    <form action="" method="post" name="login">
+        {{ form.hidden_tag() }}
+        <p>
+            Select one of the providers below:<br>
+            {{ form.id(size=80) }}
+            {% for error in form.id.errors %}
+                <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}<br>
+            
+			<a href="{{ url_for('oauth_authorize', provider='facebook') }}">Login with Facebook</a>
+            |<a href="{{ url_for('oauth_authorize', provider='twitter') }}">Login with Twitter</a>
+			|<a href="{{ url_for('oauth_authorize', provider='google') }}">Login with Google</a>
+			
+        </p>
+        <p>{{ form.remember_me }} Remember Me</p>
+        <p><input type="submit" value="Sign In"></p>
+    </form>
+	
+	<p>
+	<select>
+	{% for row in rows %}
+	<option value="{{row.place}}">{{row.place}}</option>
+	{% endfor %}
+	</select>
+	</p>
+{% endblock %}

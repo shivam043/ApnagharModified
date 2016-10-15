@@ -1,0 +1,105 @@
+ 
+ <html>
+ 
+ 
+ <head>
+<!-- arrow down -->
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+
+    <meta charset="ISO-8859-1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	 <!-- Bootstrap Core CSS -->
+    <link href="/static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/static/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- Theme CSS -->
+    <link href="/static/css/grayscale.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		
+
+    <![endif]-->
+ 
+ 
+ 
+ 
+ 
+ 
+ <body id="page-top" data-spy="/static/scroll" data-target="/static/.navbar-fixed-top" style="background-color:white;  color:black">
+ 
+ 
+ <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation" style="color:black;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top" style="color:black;">
+                    <i class="fa fa-home"></i> <span class="light">APNA</span>GHAR
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+					{% if g.user.is_authenticated == False %}
+					
+                    <a href="javascript:void(0)" id="myBtn"  style="color:black;">LogIn</a>
+					{% endif %}
+                    {% if g.user.is_authenticated  %}
+                    
+					
+					<div class="dropdown">
+<a href="javascript:void(0)" onclick="myFunction()" class="dropbtn"><img src="{{ g.user.avatar(30) }}" style="border-radius: 50%"> <i class="fa fa-sort-down" style="font-size:36px;color:black"></i></a>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="http://localhost:5000/profile">Profile</a>
+    <a href="#about">Shortlisted</a>
+    <a href="{{ url_for('logout') }}" style="color:black;">Logout</a>
+  </div>
+</div>
+					
+					
+                    
+                    {% endif %}
+                    
+                    <!--*****************************************-->    
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about" style="color:black;">About</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#download" style="color:black;">Search</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact" style="color:black;">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+	
+	 {% block content %}{% endblock %}
+	 </body>
+	</html>
+	
